@@ -43,3 +43,18 @@ def part1(data: list[str]) -> int:
 def solve1(filename: str | Path) -> int:
     answer = part1(read_file(filename))
     return answer
+
+def number_of_full_rotations(steps: int) -> int:
+    return int(steps / 100)
+
+def part2(data: list[str]) -> int:
+    zero_count = 0
+
+    for line in data:
+        zero_count += number_of_full_rotations(int(line[1:]))
+    
+    return zero_count
+
+def solve2(filename: str | Path) -> int:
+    answer = part2(read_file(filename))
+    return answer

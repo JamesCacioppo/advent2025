@@ -9,4 +9,5 @@ dependencies = [
     "pydantic>=2.12.5",
     "pytest>=9.0.1",
     "ruff>=0.14.8",
+    "typer>=0.20.0",
 ]
