@@ -40,6 +40,7 @@ def part1(data: list[str]) -> int:
 
     return zero_count
 
+
 def solve1(filename: str | Path) -> int:
     answer = part1(read_file(filename))
     return answer
@@ -47,14 +48,21 @@ def solve1(filename: str | Path) -> int:
 
 def number_of_full_rotations(line: str) -> int:
     """Given a string like R156, determine how many full rotations and return an int."""
-    return int(line[1:]) % 100
+    return int(int(line[1:]) / 100)
 
 
 def pass_or_land_on_zero(line: str, starting_point: int) -> bool:
+    """Subtract all full rotations to find remaining steps. Return true if remaining steps pass or land on zero."""
     direction = line[0]
     steps = int(line[1:])
-    remaining_steps = steps - ((steps % 100) * 100)
+    remaining_steps = steps - (int(steps / 100) * 100)
 
+    if starting_point == 0:
+        # this function receives the remaining steps which should be < 100.
+        # Therefore, if the start is 0 it is not possible to land on zero.
+        # Additionally, if the edge case of 100 steps starting from zero arises,
+        # the count of 1 is covered by the num_of_full_rotations() function.
+        return False
     if direction == "L":
         if remaining_steps >= starting_point:
             return True
@@ -70,5 +78,14 @@ def pass_or_land_on_zero(line: str, starting_point: int) -> bool:
 
 
 def solve2(filename: str | Path) -> int:
-    answer = 0 #part2(read_file(filename))
+    lines = read_file(filename)
+    answer = 0
+
+    starting_point = 50
+
+    for line in lines:
+        answer += number_of_full_rotations(line)
+        answer += pass_or_land_on_zero(line, starting_point)
+        land_on_zero, starting_point = is_rotation_zero(line, starting_point)
+
     return answer
