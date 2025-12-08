@@ -4,7 +4,7 @@ from day1 import part1, part2, read_file, is_rotation_zero
 
 
 def test_read_file():
-    lines = read_file("data/day1_test_input.txt")
+    lines = read_file("data/day1_part1_sample")
     assert lines == [
         "L68",
         "L30",
