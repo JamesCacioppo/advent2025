@@ -1,6 +1,6 @@
 import pytest
 
-from day1 import part1, read_file, is_rotation_zero
+from day1 import part1, read_file, is_rotation_zero, number_of_full_rotations
 
 
 def test_read_file():
@@ -58,3 +58,6 @@ def test_part1():
     lines = read_file("data/day1_part1_sample")
     result = part1(lines)
     assert result == 3
+
+def test_number_of_full_rotations():
+    assert number_of_full_rotations(100) == 1

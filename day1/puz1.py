@@ -44,17 +44,31 @@ def solve1(filename: str | Path) -> int:
     answer = part1(read_file(filename))
     return answer
 
-def number_of_full_rotations(steps: int) -> int:
-    return int(steps / 100)
 
-def part2(data: list[str]) -> int:
-    zero_count = 0
+def number_of_full_rotations(line: str) -> int:
+    """Given a string like R156, determine how many full rotations and return an int."""
+    return int(line[1:]) % 100
 
-    for line in data:
-        zero_count += number_of_full_rotations(int(line[1:]))
-    
-    return zero_count
+
+def pass_or_land_on_zero(line: str, starting_point: int) -> bool:
+    direction = line[0]
+    steps = int(line[1:])
+    remaining_steps = steps - ((steps % 100) * 100)
+
+    if direction == "L":
+        if remaining_steps >= starting_point:
+            return True
+        else:
+            return False
+    elif direction == "R":
+        if remaining_steps >= (100 - starting_point):
+            return True
+        else:
+            return False
+    else:
+        raise ValueError(f"Unknown direction: {direction}")
+
 
 def solve2(filename: str | Path) -> int:
-    answer = part2(read_file(filename))
+    answer = 0 #part2(read_file(filename))
     return answer
