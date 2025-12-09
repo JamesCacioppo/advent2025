@@ -2,6 +2,7 @@ from pathlib import Path
 import typer
 
 from day1 import solve1, solve2
+from day2 import solve1 as day2solve1
 
 app = typer.Typer()
 
@@ -19,7 +20,10 @@ def day1(input_file: str) -> None:
 
 @app.command()
 def day2(input_file: str) -> None:
-    print("Day 2 placeholder")
+    input_path = Path(__file__).parent / "data" / input_file
+
+    part1_answer = day2solve1(input_path)
+    print("Part 1:", part1_answer)
 
 
 if __name__ == "__main__":
