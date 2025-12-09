@@ -1,5 +1,3 @@
-import pytest
-
 from day1 import (
     part1,
     read_file,

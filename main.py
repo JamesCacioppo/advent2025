@@ -17,5 +17,10 @@ def day1(input_file: str) -> None:
     print("Part 2:", part2_answer)
 
 
+@app.command()
+def day2(input_file: str) -> None:
+    print("Day 2 placeholder")
+
+
 if __name__ == "__main__":
     app()
