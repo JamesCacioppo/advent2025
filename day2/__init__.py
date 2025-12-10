@@ -6,9 +6,4 @@ consumers can `from advent2025.day1 import part1, part2, solve`.
 
 from .puz2 import build_range, read_file, check_product_id_for_pattern, solve1
 
-__all__ = [
-    "build_range",
-    "read_file",
-    "check_product_id_for_pattern",
-    "solve1"
-]
+__all__ = ["build_range", "read_file", "check_product_id_for_pattern", "solve1"]

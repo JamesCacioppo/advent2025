@@ -1,9 +1,11 @@
 from pathlib import Path
 
+
 def read_file(filename: str | Path) -> list[str]:
     with open(filename, "r") as f:
         lines = f.read().split(",")
     return lines
+
 
 def build_range(product_id_range: str) -> list[int]:
     """Takes a string range, eg 11-22, and produces a list of ints, eg [11, 12, ..., 22]"""
@@ -15,16 +17,18 @@ def build_range(product_id_range: str) -> list[int]:
 
     return product_ids
 
+
 def check_product_id_for_pattern(product_id: int) -> bool:
-    """Take an individual product ID and check for patterns."""
+    """Take an individual product ID and check for patterns where the first half of a string is equal to the second half.  Example: 1212"""
 
     product_id_string = str(product_id)
     length = len(product_id_string)
 
-    if product_id_string[0:length//2] == product_id_string[length//2:length]:
+    if product_id_string[0 : length // 2] == product_id_string[length // 2 : length]:
         return True
 
     return False
+
 
 def solve1(filename: str | Path) -> int:
     sum_ids = 0
