@@ -1,0 +1,28 @@
+9299215699182491 < 16 chars
+
+92992|15699182491 < Need 12, chop off 11, most sig chosen from first 5
+^
+9
+ 299215699182491 < 15 chars
+ 29921|5699182491 < Need 11, most sig chosen from what's chopped off before the last 10, remainder = 10 chars
+  ^
+  9
+   9215699182491 < 13 chars
+   9215|699182491 < Need 10, most sig chosen from what's chopped off before the last 9, remainder = 9 chars
+   ^
+   9
+    215799182491 < 12 chars
+    2157|99182491 < Need 9. Chop off 8 and select highest from what's left
+       ^
+       7
+        99182491 < 8 chars
+        9|9182491 < Need 8. Chop off 7 and select what's left.  In this case only one option left. < Skip all future iterations
+        ^
+        9
+         9182491 < 7 chars
+         9|182491 < Need 7. chop off 6 and select what's left. In this case, only one option left.
+         ^
+         9
+          182491 < Since we only have as many chars left as we need, we can skip future iter's
+
+999799182491 < Final answer
