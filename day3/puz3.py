@@ -42,3 +42,46 @@ def solve1(filename: str | Path) -> int:
         sum_joltages += find_joltage(line)
 
     return sum_joltages
+
+
+def find_highest_value(number_string: str) -> tuple[int, int]:
+    """Accept a string of numbers and return highest number and position"""
+
+    number_list = list(number_string)
+    number_list.sort(reverse=True)
+
+    return (int(number_list[0]), number_string.find(number_list[0]))
+
+
+def find_twelve_char_joltage(number_string: str) -> int:
+    """Accept a string of numbers and return highest 12 char value as an int"""
+
+    number_list = list(number_string)
+
+    character_count = 12
+    joltage_list: list[str] = []
+    while len(joltage_list) < 12:
+        list_to_select_from = number_list[: len(number_list) - character_count + 1]
+        ordered_list = list_to_select_from.copy()
+        ordered_list.sort(reverse=True)
+        joltage_list.append(ordered_list[0])
+
+        position = list_to_select_from.index(ordered_list[0])
+        number_list = number_list[position + 1 :]
+
+        character_count -= 1
+
+    joltage_string = ""
+    joltage_string = "".join(joltage_list)
+
+    return int(joltage_string)
+
+
+def solve2(filename: str | Path) -> int:
+    sum_joltages = 0
+    lines = read_file(filename)
+
+    for line in lines:
+        sum_joltages += find_twelve_char_joltage(line)
+
+    return sum_joltages
