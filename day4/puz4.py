@@ -29,13 +29,18 @@ def check_adjacent_places(
         return False
 
 
-def solve1(filename: str | Path) -> int:
-    lines = read_file(filename)
-
+def build_rolls_array(lines: list[str]) -> list[list[str]]:
     paper_rolls_array = []
     for line in lines:
         paper_rolls_array.append(list(line))
 
+    return paper_rolls_array
+
+
+def solve1(filename: str | Path) -> int:
+    lines = read_file(filename)
+
+    paper_rolls_array = build_rolls_array(lines)
     total_accessible_rolls = 0
     number_of_rows = len(paper_rolls_array)
     number_of_columns = len(paper_rolls_array[0])
@@ -47,3 +52,33 @@ def solve1(filename: str | Path) -> int:
                     total_accessible_rolls += 1
 
     return total_accessible_rolls
+
+
+def solve2(filename: str | Path) -> int:
+    """Determine the total number of roles that can be removed."""
+
+    lines = read_file(filename)
+
+    paper_rolls_array = build_rolls_array(lines)
+    total_rolls_removed = 0
+    number_of_rows = len(paper_rolls_array)
+    number_of_columns = len(paper_rolls_array[0])
+
+    rolls_to_be_removed: list[tuple[int, int]] = [(1, 1)]
+
+    while len(rolls_to_be_removed) > 0:
+        rolls_to_be_removed = []
+        for row in range(number_of_rows):
+            for column in range(number_of_columns):
+                if paper_rolls_array[row][column] == "@":
+                    if check_adjacent_places(row, column, paper_rolls_array):
+                        rolls_to_be_removed.append((row, column))
+
+        total_rolls_removed += len(rolls_to_be_removed)
+
+        for roll_to_be_removed in rolls_to_be_removed:
+            row = roll_to_be_removed[0]
+            column = roll_to_be_removed[1]
+            paper_rolls_array[row][column] = "."
+
+    return total_rolls_removed

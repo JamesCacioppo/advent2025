@@ -22,3 +22,7 @@ def test_check_adjacent_places():
 
 def test_solve1():
     assert d4.solve1("data/day4_sample") == 13
+
+
+def test_solve2():
+    assert d4.solve2("data/day4_sample") == 43

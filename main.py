@@ -49,6 +49,9 @@ def day4(input_file: str) -> None:
     part1_answer = d4.solve1(input_path)
     print(f"Part 1: {part1_answer}")
 
+    part2_answer = d4.solve2(input_path)
+    print(f"Part 2: {part2_answer}")
+
 
 if __name__ == "__main__":
     app()
