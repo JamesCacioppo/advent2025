@@ -5,6 +5,7 @@ from day1 import solve1, solve2
 import day2 as d2
 import day3 as d3
 import day4 as d4
+import day5 as d5
 
 app = typer.Typer()
 
@@ -50,6 +51,17 @@ def day4(input_file: str) -> None:
     print(f"Part 1: {part1_answer}")
 
     part2_answer = d4.solve2(input_path)
+    print(f"Part 2: {part2_answer}")
+
+
+@app.command()
+def day5(input_file: str) -> None:
+    input_path = Path(__file__).parent / "data" / input_file
+
+    # part1_answer = d5.solve1(input_path)
+    # print(f"Part 1: {part1_answer}")
+
+    part2_answer = d5.solve2(input_path)
     print(f"Part 2: {part2_answer}")
 
 
